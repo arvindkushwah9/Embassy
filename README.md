@@ -1,7 +1,19 @@
 # esa_backend
 
 Getting the local dev server running first time
-sudo pip install -r requiremetns.txt
+pipenv install
+pipenv shell
+./manage.py makemigrations
+./manage.py migrate
+./manage.py runserver
+If dependencies already installed
+pipenv shell
+./manage.py runserver
+
+OR
+
+
+sudo pip install -r requirements.txt
 pip install djangorestframework
 python3 manage.py makemigrations
 python3 manage.py migrate
