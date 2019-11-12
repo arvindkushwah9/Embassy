@@ -9,6 +9,7 @@ verify_ssl = true
 mysqlclient = "==1.4.2.post1"
 pillow = "==6.0.0"
 Django = "==2.2.4"
+djangorestframework=="3.10.3"
 
 [requires]
 python_version = "3.6"
