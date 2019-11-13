@@ -1,26 +1,27 @@
 # esa_backend
 
 Getting the local dev server running first time
-pipenv install
-pipenv shell
-./manage.py makemigrations
-./manage.py migrate
+# Install Python 3.6.8
+pip 19.3.1 
+
+pipenv install 
+pipenv shell 
+./manage.py makemigrations 
+./manage.py migrate 
+./manage.py runserver 
+If dependencies already installed 
+pipenv shell 
 ./manage.py runserver
-If dependencies already installed
-pipenv shell
-./manage.py runserver
 
-OR
+## OR
 
-
-sudo pip install -r requirements.txt
-pip install djangorestframework
-python3 manage.py makemigrations
-python3 manage.py migrate
-python3 manage.py runserver
-If dependencies already installed
-python3 manage.py runserver
-● Never commit your db.sqlite file
+sudo pip install -r requirements.txt 
+pip install djangorestframework 
+python3 manage.py makemigrations 
+python3 manage.py migrate 
+python3 manage.py runserver 
+If dependencies already installed 
+python3 manage.py runserver 
 
 #API
 
