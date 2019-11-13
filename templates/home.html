@@ -1,17 +1,102 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
-
+{% load staticfiles%}
 {% block title %}Home{% endblock %}
-
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">logout</a></p>
-    <a href="/news">Posts</a>
+    <div class="wrapper">
+      <!-- Sidebar Holder and stick in the top -->
+      <!--===============================================================================================-->
+      <nav id="sidebar" class="sticky-top">
+        <div class="sidebar-header sticky-top">
+          <a href="index.html">
 
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a> || 
-  <a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
+          	<img src="{% static 'icons/esa.png' %}" style="width: 160px"; height="160px">
+
+          </a>
+          <h6>Embassy Service App </h6>
+          <span>  <b>مرحبـــا بك في موقع خدمات السفارة اليمنية في كوالالمبور</b> </span>
+        </div>
+        <ul class="list-unstyled CTAs">
+        	{% if user.is_authenticated %}
+        	  <li >
+            <a  href="{% url 'logout' %}" class="download">Logout</a>
+	          </li>
+	         
+        	{% else %}
+					   <li >
+            <a  href="{% url 'login' %}" class="download">Sign in </a>
+	          </li>
+	          <li >
+	            <a href="{% url 'signup' %}" class="download">Sign up </a>
+	          </li>
+					{% endif %}
+        
+          <!--                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>-->
+        </ul>
+      </nav>
+      <!-- Page Content Header -->
+      <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-align-justify"></i>
+            </button>
+            <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
+          </div>
+        </nav>
+        <!--===============================================================================================-->
+        <div id="video-carousel-example" class="carousel slide carousel-fade" data-ride="carousel">
+          <!--Indicators-->
+          <ol class="carousel-indicators">
+            <li data-target="#video-carousel-example" data-slide-to="0" class="active"></li>
+            <li data-target="#video-carousel-example" data-slide-to="1"></li>
+            <li data-target="#video-carousel-example" data-slide-to="2"></li>
+          </ol>
+          <!--/.Indicators-->
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox" style="width: 1870px ; height: 770px;">
+            <div class="carousel-item active" >
+              <video class="video-fluid" autoplay loop muted>
+                <source src="esa.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <!--===============================================================================================-->
+          <!--/.Slides-->
+          <!--Controls-->
+          <a class="carousel-control-prev" href="#video-carousel-example" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#video-carousel-example" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+          </a>
+          <!--/.Controls-->
+        </div>
+        <!--Carousel Wrapper-->
+        <!--this is the Gif image -->
+        <div style="text-align:center; margin-top: 5%"  >
+          <img src="{% static 'icons/wlcm.gif' %}" class="img-fluid">
+        </div>
+        <!--            </div>-->
+        <!--            <h2>Collapsible Sidebar Using Bootstrap 4</h2>-->
+        <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+        <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+        <!--            <div class="line"></div>-->
+        <!--            <h2>Lorem Ipsum Dolor</h2>-->
+        <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+        <!--            <div class="line"></div>-->
+        <!--            <h2>Lorem Ipsum Dolor</h2>-->
+        <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+        <!--            <div class="line"></div>-->
+        <!--            <h3>Lorem Ipsum Dolor</h3>-->
+        <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+      </div>
+    </div>
 {% endblock %}
