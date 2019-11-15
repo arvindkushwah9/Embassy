@@ -5,5 +5,7 @@ from . import views
 
 
 urlpatterns = [
-    path('signup/', views.SignUp.as_view(), name='signup'),
+    path('signup/', views.SignUp, name='signup'),
+    # url(r'^signup/$', core_views.signup, name='signup'),
+
 ]
