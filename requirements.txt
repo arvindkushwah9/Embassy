@@ -127,3 +127,4 @@ Werkzeug==0.15.4
 WTForms==2.1
 xkit==0.0.0
 zope.interface==4.3.2
+django-rest-registration=2.2.4
