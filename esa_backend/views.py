@@ -3,6 +3,9 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
+
+from django.shortcuts import render
+
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
@@ -34,3 +37,24 @@ def login(request):
 def sample_api(request):
     data = {'sample_data': 123}
     return Response(data, status=HTTP_200_OK)
+    
+def contact(request):
+  return render(request, 'contact.html')
+
+def services(request):
+  return render(request, 'services.html')
+
+def profile(request):
+  return render(request, 'profile.html')
+
+def notification(request):
+  return render(request, 'notification.html')
+
+def tracking(request):
+  return render(request, 'tracking.html')
+
+def passport_renewal(request):
+  return render(request, 'passport_renewal.html')
+
+def passport_apply(request):
+  return render(request, 'passport_apply.html')

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView # new
-from .views import login, sample_api
+from .views import login, sample_api, contact, services, profile, notification, tracking, passport_renewal, passport_apply
 
 urlpatterns = [
     # path('', include('news.urls')),
@@ -26,6 +26,13 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('api/login', login),
-    path('api/sample_api', sample_api)
+    path('api/sample_api', sample_api),
+    path('contact', contact),
+    path('services', services),
+    path('profile', profile),
+    path('notification', notification),
+    path('tracking', tracking),
+    path('passport_renewal', passport_renewal),
+    path('passport_apply', passport_apply)
 
 ]

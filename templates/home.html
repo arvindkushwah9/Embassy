@@ -8,7 +8,7 @@
       <!--===============================================================================================-->
       <nav id="sidebar" class="sticky-top">
         <div class="sidebar-header sticky-top">
-          <a href="index.html">
+          <a href="{% url 'home' %}">
 
           	<img src="{% static 'icons/esa.png' %}" style="width: 160px"; height="160px">
 
@@ -23,15 +23,15 @@
         {% if user.is_authenticated %}
           <ul class="list-unstyled components">
             <li >
-              <a href="#">News </a>
+              <a href="/news">News </a>
             </li>
 
             <li>
-              <a href="#">Services </a>
+              <a href="/services">Services </a>
             </li>
 
             <li>
-              <a href="#" >Profile</a>
+              <a href="/profile" >Profile</a>
             </li>
 
             <li>
@@ -39,11 +39,11 @@
             </li>
 
             <li>
-              <a href="#">Contact us </a>
+              <a href="/contact">Contact us </a>
             </li>
 
             <li>
-              <a href="#">Tracking </a>
+              <a href="/tracking">Tracking </a>
             </li>
           </ul>
           <ul class="list-unstyled CTAs">
@@ -77,9 +77,6 @@
             <span></span>
             <span></span>
             <span></span>
-            </button>
-            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-align-justify"></i>
             </button>
             <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
           </div>
@@ -145,12 +142,12 @@
           <br><br><br>
           <br><br><br>
           <!--floating button for notifications -->
-          <a href="{% url 'home' %}" class="float">
+          <a href="/notification" class="float">
           <i class="fa fa-envelope my-float"></i>
           </a>
           <div class="label-container">
             <div class="label-text">notifications </div>
-            <a href="Main.html"><i class="fa fa-play label-arrow"></i></a>
+            <a href="/notification"><i class="fa fa-play label-arrow"></i></a>
           </div>
         {% else %}
           <div id="video-carousel-example" class="carousel slide carousel-fade" data-ride="carousel">

@@ -1,0 +1,137 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block title %}Profile{% endblock %}
+{% block content %}
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <!--logo with title -->
+      <!--        here i removed the class name and I added the sticky-top -->
+      <div class="sticky-top">
+        <div class="sidebar-header sticky-top">
+          <a href="{% url 'home' %}"> <img src="{% static 'icons/esa.png' %}" style="width: 160px" ; height="160px" ></a>
+          <h6>Embassy Service App </h6>
+          <span>  <b>مرحبـــاً بك في موقع خدمات السفارة </b> </span>
+        </div>
+      </div>
+      <ul class="list-unstyled components">
+        <li >
+          <a href="/news">News </a>
+        </li>
+        <li>
+          <a href="/services">Services </a>
+        </li>
+        <li>
+          <a href="/profile" >Profile</a>
+        </li>
+        <li>
+          <a href="#">Ad Market </a>
+        </li>
+        <li>
+          <a href="/contact">Contact us </a>
+        </li>
+        <li>
+          <a href="/tracking">Tracking </a>
+        </li>
+      </ul>
+      <ul class="list-unstyled CTAs">
+        <li> <a href="#" style="font-size: 12px"> Terms and Conditions </a></li>
+        <li> <a href="#" style="font-size: 12px"> FAQ </a></li>
+      </ul>
+      <ul class="list-unstyled CTAs">
+        <li>
+          <a href="{% url 'logout' %}" class="download">logout</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Page Content Header -->
+    <div id="content">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+          </button>
+          <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-align-justify"></i>
+          </button> -->
+          <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
+        </div>
+      </nav>
+      <div class="container">
+        <h1>Edit Profile</h1>
+        <hr>
+        <div class="row">
+          <!-- edit form column -->
+          <div class="col-md-9 personal-info">
+            <div class="alert alert-info alert-dismissable">
+              <a class="panel-close close" data-dismiss="alert">×</a>
+              <i class="fa fa-bell"></i>
+              You can update your profile Info
+            </div>
+            <h3>Personal info</h3>
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Name </label>
+                <div class="col-lg-8">
+                  <input class="form-control" type="text" value="Ebrahim Ali">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Passport Number </label>
+                <div class="col-lg-8">
+                  <input class="form-control" type="text" value="123">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Phone Number </label>
+                <div class="col-lg-8">
+                  <input class="form-control" type="number" value="123">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Email:</label>
+                <div class="col-lg-8">
+                  <input class="form-control" type="text" value="name@gmail.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">Password:</label>
+                <div class="col-md-8">
+                  <input class="form-control" type="password" value="123">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label">Confirm password:</label>
+                <div class="col-md-8">
+                  <input class="form-control" type="password" value="1234">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                  <input type="button" class="btn btn-primary" value="Save Changes">
+                  <span></span>
+                  <input type="reset" class="btn btn-default" value="Cancel">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <br><br><br>
+      <br><br><br>
+      <!--floating button for notifications -->
+      <a href="/notification" class="float">
+      <i class="fa fa-envelope my-float"></i>
+      </a>
+      <div class="label-container">
+        <div class="label-text">notifications </div>
+        <a href="/notification"><i class="fa fa-play label-arrow"></i></a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
