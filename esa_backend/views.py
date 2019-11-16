@@ -58,3 +58,9 @@ def passport_renewal(request):
 
 def passport_apply(request):
   return render(request, 'passport_apply.html')
+
+def terms_condition(request):
+  return render(request, 'terms_condition.html')
+
+def faq(request):
+  return render(request, 'faq.html')

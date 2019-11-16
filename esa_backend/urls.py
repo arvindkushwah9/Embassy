@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView # new
-from .views import login, sample_api, contact, services, profile, notification, tracking, passport_renewal, passport_apply
+from .views import login, sample_api, contact, services, profile, notification, tracking, passport_renewal, passport_apply, terms_condition, faq
 
 urlpatterns = [
     # path('', include('news.urls')),
@@ -33,6 +33,8 @@ urlpatterns = [
     path('notification', notification),
     path('tracking', tracking),
     path('passport_renewal', passport_renewal),
-    path('passport_apply', passport_apply)
+    path('passport_apply', passport_apply),
+    path('terms_condition', terms_condition),
+    path('faq', faq)
 
 ]
