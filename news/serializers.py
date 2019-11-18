@@ -6,5 +6,5 @@ class PostSerializer(serializers.Serializer):
     description= serializers.CharField()
     content= serializers.CharField()
     image= serializers.ImageField()
-    pub_date= serializers.DateTimeField('date published')
-    update_date= serializers.DateTimeField('date updated')
+    pub_date= serializers.DateTimeField()
+    update_date= serializers.DateTimeField()
