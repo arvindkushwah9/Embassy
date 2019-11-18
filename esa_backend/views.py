@@ -3,6 +3,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
+import json
+from django.core import serializers
 
 from django.shortcuts import render
 from news.models import Post
@@ -43,8 +45,7 @@ def sample_api(request):
 @api_view(["GET"])
 def news_api(request):
     latest_post_list = Post.objects.order_by('-pub_date')[:5]
-    data = {'news_data': latest_post_list}
-    return Response(data, status=HTTP_200_OK)
+    return Response(serializers.serialize('json', latest_post_list), status=HTTP_200_OK)
 
     
 def contact(request):
