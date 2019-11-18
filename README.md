@@ -36,54 +36,6 @@ python3 manage.py runserver
 
 
 
-/accounts/login/	django.contrib.auth.views.LoginView	login
-/accounts/logout/	django.contrib.auth.views.LogoutView	logout
-/accounts/password_change/	django.contrib.auth.views.PasswordChangeView	password_change
-/accounts/password_change/done/	django.contrib.auth.views.PasswordChangeDoneView	password_change_done
-/accounts/password_reset/	django.contrib.auth.views.PasswordResetView	password_reset
-/accounts/password_reset/done/	django.contrib.auth.views.PasswordResetDoneView	password_reset_done
-/accounts/reset/<uidb64>/<token>/	django.contrib.auth.views.PasswordResetConfirmView	password_reset_confirm
-/accounts/reset/done/	django.contrib.auth.views.PasswordResetCompleteView	password_reset_complete
-/accounts/signup/	accounts.views.SignUp	signup
-/admin/	django.contrib.admin.sites.index	admin:index
-/admin/<app_label>/	django.contrib.admin.sites.app_index	admin:app_list
-/admin/auth/group/	django.contrib.admin.options.changelist_view	admin:auth_group_changelist
-/admin/auth/group/<path:object_id>/	django.views.generic.base.RedirectView	
-/admin/auth/group/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:auth_group_change
-/admin/auth/group/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:auth_group_delete
-/admin/auth/group/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:auth_group_history
-/admin/auth/group/add/	django.contrib.admin.options.add_view	admin:auth_group_add
-/admin/auth/group/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:auth_group_autocomplete
-/admin/auth/user/	django.contrib.admin.options.changelist_view	admin:auth_user_changelist
-/admin/auth/user/<id>/password/	django.contrib.auth.admin.user_change_password	admin:auth_user_password_change
-/admin/auth/user/<path:object_id>/	django.views.generic.base.RedirectView	
-/admin/auth/user/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:auth_user_change
-/admin/auth/user/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:auth_user_delete
-/admin/auth/user/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:auth_user_history
-/admin/auth/user/add/	django.contrib.auth.admin.add_view	admin:auth_user_add
-/admin/auth/user/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:auth_user_autocomplete
-/admin/authtoken/token/	django.contrib.admin.options.changelist_view	admin:authtoken_token_changelist
-/admin/authtoken/token/<path:object_id>/	django.views.generic.base.RedirectView	
-/admin/authtoken/token/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:authtoken_token_change
-/admin/authtoken/token/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:authtoken_token_delete
-/admin/authtoken/token/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:authtoken_token_history
-/admin/authtoken/token/add/	django.contrib.admin.options.add_view	admin:authtoken_token_add
-/admin/authtoken/token/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:authtoken_token_autocomplete
-/admin/jsi18n/	django.contrib.admin.sites.i18n_javascript	admin:jsi18n
-/admin/login/	django.contrib.admin.sites.login	admin:login
-/admin/logout/	django.contrib.admin.sites.logout	admin:logout
-/admin/news/post/	django.contrib.admin.options.changelist_view	admin:news_post_changelist
-/admin/news/post/<path:object_id>/	django.views.generic.base.RedirectView	
-/admin/news/post/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:news_post_change
-/admin/news/post/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:news_post_delete
-/admin/news/post/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:news_post_history
-/admin/news/post/add/	django.contrib.admin.options.add_view	admin:news_post_add
-/admin/news/post/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:news_post_autocomplete
-/admin/password_change/	django.contrib.admin.sites.password_change	admin:password_change
-/admin/password_change/done/	django.contrib.admin.sites.password_change_done	admin:password_change_done
-/admin/r/<int:content_type_id>/<path:object_id>/	django.contrib.contenttypes.views.shortcut	admin:view_on_site
-
-
 ## API Paths
 /api/login	esa_backend.views.login	
 /api/sample_api	esa_backend.views.sample_api	
