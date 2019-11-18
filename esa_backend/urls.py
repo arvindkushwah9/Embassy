@@ -29,7 +29,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('api/login', login),
-    
+    path('', include('sendemail.urls')),
+
     path('contact', contact),
     path('services', services),
     path('profile', profile),

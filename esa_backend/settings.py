@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_registration'
+    'rest_registration',
+    'sendemail.apps.SendemailConfig'
 
 ]
 
@@ -158,3 +159,5 @@ REST_REGISTRATION = {
     'REGISTER_EMAIL_VERIFICATION_URL': 'http://127.0.0.1:8000/verify-email/',
     'VERIFICATION_FROM_EMAIL': 'no-reply@example.com',
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
