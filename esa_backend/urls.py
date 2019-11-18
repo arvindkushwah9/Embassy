@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView # new
-from .views import login, sample_api, contact, services, profile, notification, tracking, passport_renewal, passport_apply, terms_condition, faq
+from .views import login, sample_api, news_api, contact, services, profile, notification, tracking, passport_renewal, passport_apply, terms_condition, faq
 
 api_urlpatterns = [
     path('accounts/', include('rest_registration.api.urls')),
@@ -29,7 +29,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('api/login', login),
-    path('api/sample_api', sample_api),
+    
     path('contact', contact),
     path('services', services),
     path('profile', profile),
@@ -42,6 +42,7 @@ urlpatterns = [
 
     # API's path
     path('api/v1/', include(api_urlpatterns)),
+    path('api/v1/news', news_api),
 
 
 ]
