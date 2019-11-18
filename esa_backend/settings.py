@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_registration',
-    'django_extensions'
+    'rest_registration'
 
 ]
 
