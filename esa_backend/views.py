@@ -8,6 +8,7 @@ from django.core import serializers
 
 from django.shortcuts import render
 from news.models import Post
+from news.serializers import PostSerializer
 
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
@@ -44,9 +45,11 @@ def sample_api(request):
 @csrf_exempt
 @api_view(["GET"])
 def news_api(request):
-    latest_post_list = Post.objects.order_by('-pub_date')[:5]
-    return Response(serializers.serialize('json', latest_post_list), status=HTTP_200_OK)
-
+    posts = Post.objects.all()
+    # return Response(latest_post_list, status=HTTP_200_OK)
+    # the many param informs the serializer that it will be serializing more than a single article.
+    serializer = PostSerializer(posts, many=True)
+    return Response({"posts": serializer.data})
     
 def contact(request):
   return render(request, 'contact.html')
