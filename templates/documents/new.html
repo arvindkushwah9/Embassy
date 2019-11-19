@@ -1,12 +1,27 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
 {% load staticfiles%}
-{% block title %}Passport Renewal{% endblock %}
+{% block title %}Passport Apply{% endblock %}
 {% block content %}
   <style>
     body {font-family: Arial, Helvetica, sans-serif;}
     * {box-sizing: border-box;
 
+    }
+    /* Full-width input fields */
+    input[type=text], input[type=password],input[type=number] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* Add a background color when the inputs get focus */
+    input[type=text]:focus, input[type=password]:focus ,input[type=number]:focus{
+      background-color: #ddd;
+      outline: none;
     }
     .modal-content {
       background-color: #fefefe;
@@ -103,25 +118,22 @@
             </div>
           </div>
         </div>
-          <form method="post">
-              {% csrf_token %}
-              <div class="card">
-                <div class="card-body">
-                  <!--Header-->
-                  <div class="form-header blue accent-1">
-                    <h3><i class="fas fa-envelope"></i> Write to us:</h3>
-                  </div>
-                  <p>your feedback is heighly considered .</p>
-                  <br>
-                  <!--Body-->
-                  {{ form.as_p }}
-                  <div class="text-center mt-4">
-                     <input type="submit" value="Submit" class="btn btn-light-blue" />
+        <form class="modal-content " method="post" style="background:gainsboro">
+          {% csrf_token %}
+          <div class="container">
+            <h1>Submission </h1>
+            <p>Upload all your files here according to PDF specifications   <b>Passport Renewal Requirements </b> <br> then track your application in the tracking page to keep updated   </p>
+            <div class="clearfix">
+              {{ form.as_p }}
+              <div class="text-center mt-4">
+                <!-- <input type="submit" value="Submit" class="btn btn-light-blue" /> -->
+                <button type="submit" class="btn btn-success button_cen">submit </button>
 
-                  </div>
-                </div>
               </div>
-            </form>
+              <a href="/passport_renewal"> <button type="button" class="btn btn-primary button_cen">Back </button> </a>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

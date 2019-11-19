@@ -14,13 +14,18 @@
     <tr>
     <th>Name</th>
     <th>Pages</th>
+    <th>Action</th>
     </tr>
 </thead>
 <tbody>
     {% for document in documents %}
     <tr>
-    <td>{{ document.title }}</td>
-    <td>{{ document.image }}</td>
+      <td>{{ document.title }}</td>
+      <td><img src="{{ document.image }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /></td>
+      <td>
+        <a href="/documents/edit/{{ document.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a> | 
+        <a href="/documents/delete/{{ document.id }}">Delete</a>
+      </td>
     </tr>
     {% endfor %}
 </tbody>

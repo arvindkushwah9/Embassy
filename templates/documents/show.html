@@ -24,8 +24,8 @@
         <td>{{ document.title }}</td>  
         <td>{{ document.image }}</td>  
         <td>  
-            <a href="/edit/{{ document.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ document.id }}">Delete</a>  
+            <a href="/documents/edit/{{ document.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/documents/delete/{{ document.id }}">Delete</a>  
         </td>  
     </tr>  
 {% endfor %}  
@@ -33,6 +33,6 @@
 </table>  
 <br>  
 <br>  
-<center><a href="/ducuments/new" class="btn btn-primary">Add New Record</a></center>  
+<center><a href="/documents/new" class="btn btn-primary">Add New Record</a></center>  
 </body>  
 </html>  

@@ -48,8 +48,8 @@ def edit(request, id):
 
 def update(request, id):  
     document = Document.objects.get(id=id)  
-    form = documentForm(request.POST, instance = document)  
-    if form.is_valid():  
+    form = DocumentForm(request.POST, instance = document)
+    if form.is_valid():
         form.save()  
         return redirect("/documents")  
     return render(request, 'documents/edit.html', {'document': document})  
