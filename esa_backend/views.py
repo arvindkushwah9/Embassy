@@ -9,6 +9,7 @@ from django.core import serializers
 from django.shortcuts import render
 from news.models import Post
 from news.serializers import PostSerializer
+from accounts.serializers import UserSerializer
 
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
@@ -16,6 +17,10 @@ from rest_framework.status import (
     HTTP_200_OK
 )
 from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import authentication_classes
+from django.forms.models import model_to_dict
 
 
 @csrf_exempt
@@ -50,6 +55,13 @@ def news_api(request):
     # the many param informs the serializer that it will be serializing more than a single article.
     serializer = PostSerializer(posts, many=True)
     return Response({"posts": serializer.data})
+
+@api_view(['GET'])
+# @authentication_classes([SessionAuthentication, BasicAuthentication])
+# @permission_classes([IsAuthenticated])
+def get_profile(request, format=None):
+    dict_obj = model_to_dict(  request.user )
+    return Response({"profile": dict_obj})
     
 def contact(request):
   return render(request, 'contact.html')
