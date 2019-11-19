@@ -1,0 +1,38 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>document Records</title>  
+     {% load staticfiles %}  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>document ID</th>  
+        <th>document title</th>  
+        <th>document image</th>  
+
+        <th>Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for document in documents %}  
+    <tr>  
+        <td>{{ document.id }}</td>  
+        <td>{{ document.title }}</td>  
+        <td>{{ document.image }}</td>  
+        <td>  
+            <a href="/edit/{{ document.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ document.id }}">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/ducuments/new" class="btn btn-primary">Add New Record</a></center>  
+</body>  
+</html>  

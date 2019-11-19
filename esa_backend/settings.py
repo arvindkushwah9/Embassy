@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_registration',
-    'sendemail.apps.SendemailConfig'
+    'sendemail.apps.SendemailConfig',
+    'documents.apps.DocumentsConfig'
 
 ]
 

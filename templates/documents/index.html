@@ -1,0 +1,30 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load staticfiles %}  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+     <h1>Books</h1>
+
+<table border="1">
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Pages</th>
+    </tr>
+</thead>
+<tbody>
+    {% for document in documents %}
+    <tr>
+    <td>{{ document.title }}</td>
+    <td>{{ document.image }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+</body>  
+</html>  
