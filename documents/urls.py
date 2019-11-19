@@ -19,4 +19,7 @@ urlpatterns = [
      # ex: /documents/5/update/
     path('update/<int:id>', views.update), 
     path('delete/<int:id>', views.destroy),  
+
+    path('documents', views.DocumentList.as_view()),
+    path('documents/<int:pk>/', views.DocumentDetail.as_view()),
 ]

@@ -6,6 +6,9 @@ from .models import Document
 from django.template import loader
 from .forms import DocumentForm
 from datetime import datetime
+from rest_framework import generics
+from .models import Document
+from .serializers import DocumentSerializer
 
 def index(request):
   documents = Document.objects.all()
@@ -55,3 +58,17 @@ def destroy(request, id):
     document = Document.objects.get(id=id)  
     document.delete()  
     return redirect("/documents")  
+
+class DocumentList(generics.ListAPIView):
+    queryset = Document.objects.all()
+    serializer_class = DocumentSerializer
+
+
+class DocumentDetail(generics.RetrieveAPIView):
+    queryset = Document.objects.all()
+    serializer_class = DocumentSerializer
+
+    
+class DocumentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Document.objects.all()
+    serializer_class = DocumentSerializer

@@ -2,8 +2,11 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
-from .models import Post
 from django.template import loader
+
+from rest_framework import generics
+from .models import Post
+from .serializers import NewsSerializer
 
 
 def index(request):
@@ -20,3 +23,16 @@ def update(request, post_id):
 
 def edit(request, post_id):
   return HttpResponse("You're voting on post %s." % post_id)
+
+class NewsList(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = NewsSerializer
+
+
+class NewsDetail(generics.RetrieveAPIView):
+    queryset = Post.objects.all()
+    serializer_class = NewsSerializer
+
+class NewsDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = NewsSerializer

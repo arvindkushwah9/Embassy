@@ -10,4 +10,7 @@ urlpatterns = [
     path('<int:post_id>/results/', views.edit, name='edit'),
     # ex: /polls/5/update/
     path('<int:post_id>/update/', views.update, name='update'),
+
+    path('news', views.NewsList.as_view()),
+    path('news/<int:pk>/', views.NewsDetail.as_view()),
 ]

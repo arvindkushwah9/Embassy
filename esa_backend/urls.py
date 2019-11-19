@@ -46,6 +46,6 @@ urlpatterns = [
     path('api/v1/', include(api_urlpatterns)),
     path('api/v1/news', news_api),
     path('api/v1/get_profile', get_profile),
-
+    path('api/v1/', include('documents.urls'))
 
 ]
