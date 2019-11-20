@@ -63,7 +63,13 @@ def approved(request):
     document = Document.objects.get(id=request.GET.get('id'))  
     document.approved = True
     document.save()  
-    return redirect("/admin/documents/document/")  
+    return redirect("/admin/documents/document/") 
+
+def disapproved(request):  
+    document = Document.objects.get(id=request.GET.get('id'))  
+    document.approved = False
+    document.save()  
+    return redirect("/admin/documents/document/") 
 
 class DocumentList(generics.ListAPIView):
     queryset = Document.objects.all()

@@ -24,4 +24,5 @@ urlpatterns = [
     path('documents/<int:pk>/', views.DocumentDetail.as_view()),
 
     path('approved', views.approved),
+    path('disapproved', views.disapproved),
 ]

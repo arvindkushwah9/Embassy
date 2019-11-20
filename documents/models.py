@@ -23,5 +23,9 @@ class Document(models.Model):
         return reverse('document_edit', kwargs={'pk': self.pk})
 
     def approved_url(self):
-        url = '/documents/approved?id=' + str(self.pk)
-        return format_html("<a href='%s'>%s</a>" % (url, 'Approved'))
+        if self.approved:
+          url = '/documents/disapproved?id=' + str(self.pk)
+          return format_html("<a href='%s'>%s</a>" % (url, 'DeApproved'))          
+        else:
+          url = '/documents/approved?id=' + str(self.pk)
+          return format_html("<a href='%s'>%s</a>" % (url, 'Approved'))
