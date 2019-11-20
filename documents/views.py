@@ -59,6 +59,12 @@ def destroy(request, id):
     document.delete()  
     return redirect("/documents")  
 
+def approved(request):  
+    document = Document.objects.get(id=request.GET.get('id'))  
+    document.approved = True
+    document.save()  
+    return redirect("/admin/documents/document/")  
+
 class DocumentList(generics.ListAPIView):
     queryset = Document.objects.all()
     serializer_class = DocumentSerializer

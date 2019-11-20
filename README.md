@@ -16,7 +16,6 @@ pipenv shell
 ## OR
 
 sudo pip install -r requirements.txt 
-pip install djangorestframework 
 python3 manage.py makemigrations 
 python3 manage.py migrate 
 python3 manage.py runserver 
@@ -30,7 +29,7 @@ python3 manage.py runserver
 `Parameters: username: arvind, password: 12345678`
 
 ## Singup
-`POST https://es-embassy.herokuapp.com/api/v1/accounts/register` 
+`POST https://es-embassy.herokuapp.com/api/v1/accounts/register`  
 `Parameters:{
     "username": "", 
     "first_name": "", 
@@ -43,6 +42,19 @@ python3 manage.py runserver
 ## Get Profile
 `GET https://es-embassy.herokuapp.com/api/v1/get_profile` 
 `Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95`
+
+## Update Profile
+`PUT or PATCH https://es-embassy.herokuapp.com/api/v1/accounts/profile/`  
+`Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95`
+`Parameters:{
+    "id": 3,
+    "username": "admin", 
+    "first_name": "Arvind", 
+    "last_name": "Kushwah", 
+    "email": "arvindkushwah9@gmail.com" 
+}`
+
+
 
 ## Get News
 `GET https://es-embassy.herokuapp.com/api/v1/news` 
