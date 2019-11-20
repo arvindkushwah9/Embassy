@@ -26,7 +26,10 @@ python3 manage.py runserver
 
 ## Login
 `POST https://es-embassy.herokuapp.com/api/v1/accounts/login` 
-`Parameters: username: arvind, password: 12345678`
+`Parameters: {
+    "login": "arvind",
+    "password": "test@test"
+}`
 
 ## Singup
 `POST https://es-embassy.herokuapp.com/api/v1/accounts/register`  

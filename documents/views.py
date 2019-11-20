@@ -8,7 +8,9 @@ from .forms import DocumentForm
 from datetime import datetime
 from rest_framework import generics
 from .models import Document
-from .serializers import DocumentSerializer
+from .serializers import DocumentSerializer, DocumentCreateSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
 
 def index(request):
   documents = Document.objects.all()
@@ -71,7 +73,24 @@ def disapproved(request):
     document.save()  
     return redirect("/admin/documents/document/") 
 
-class DocumentList(generics.ListAPIView):
+@api_view(["POST"])
+def create_document(request):
+    serializer = DocumentCreateSerializer(data=request.data)
+    print("Data", request.data)
+    print("User", request.user.id)
+    if serializer.is_valid():
+        # user = Document.objects.create(serializer.validated_data)
+        serializer.creater_id = request.user.id 
+        serializer.save()
+        return Response({"message": "Document created"}) 
+    else:
+        data = {
+          "error": True,
+          "errors": serializer.errors,          
+        }
+        return Response(data) 
+
+class DocumentList(generics.ListCreateAPIView):
     queryset = Document.objects.all()
     serializer_class = DocumentSerializer
 

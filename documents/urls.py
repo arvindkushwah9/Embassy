@@ -22,7 +22,7 @@ urlpatterns = [
 
     path('documents', views.DocumentList.as_view()),
     path('documents/<int:pk>/', views.DocumentDetail.as_view()),
-
+    path('create_document/', views.create_document),
     path('approved', views.approved),
     path('disapproved', views.disapproved),
 ]
