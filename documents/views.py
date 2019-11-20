@@ -35,7 +35,7 @@ def new(request):
           instance.update_date = datetime.now()
           instance.save()
           # form.save()
-          return redirect('/documents')
+          return redirect('/tracking')
   return render(request, "documents/new.html", {'form': form})
 
 def show(request):  
@@ -51,7 +51,7 @@ def update(request, id):
     form = DocumentForm(request.POST, instance = document)
     if form.is_valid():
         form.save()  
-        return redirect("/documents")  
+        return redirect("/tracking")  
     return render(request, 'documents/edit.html', {'document': document})  
 
 def destroy(request, id):  
