@@ -114,11 +114,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Passport Renewal</td>
-                    <td>pending </td>
-                    <td>waiting for revision </td>
-                  </tr>
+                  {% for document in documents %}
+                    <tr>
+                      <td>Passport Renewal</td>
+                      {% if document.approved %}
+                        <td>Approved </td>
+                      {% else %}
+                        <td>Pending</td>
+                      {% endif %}
+                      <td>{{ document.title }}</td>
+                    </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>

@@ -10,7 +10,7 @@ from django.shortcuts import render
 from news.models import Post
 from news.serializers import PostSerializer
 from accounts.serializers import UserSerializer
-
+from documents.models import Document
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
@@ -76,7 +76,9 @@ def notification(request):
   return render(request, 'notification.html')
 
 def tracking(request):
-  return render(request, 'tracking.html')
+  documents = Document.objects.filter(creator_id=request.user.id)
+  context = {'documents': documents}
+  return render(request, 'tracking.html', context)
 
 def passport_renewal(request):
   return render(request, 'passport_renewal.html')
