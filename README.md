@@ -26,7 +26,10 @@ python3 manage.py runserver
 
 ## Login
 `POST https://es-embassy.herokuapp.com/api/v1/accounts/login` 
-`Parameters: username: arvind, password: 12345678`
+`Parameters: {
+    "login": "arvind",
+    "password": "test@test"
+}`
 
 ## Singup
 `POST https://es-embassy.herokuapp.com/api/v1/accounts/register`  
@@ -53,6 +56,15 @@ python3 manage.py runserver
     "last_name": "Kushwah", 
     "email": "arvindkushwah9@gmail.com" 
 }`
+
+
+## Upload Doc
+`PUT or PATCH https://es-embassy.herokuapp.com/api/v1/documents/create_document/`  
+`Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95`
+`Parameters:{
+    "title": "title", 
+    "image": "image.png in multipart" 
+}
 
 
 
