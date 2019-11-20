@@ -11,6 +11,7 @@ from .models import Document
 from .serializers import DocumentSerializer, DocumentCreateSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
   documents = Document.objects.all()
@@ -89,6 +90,16 @@ def create_document(request):
           "errors": serializer.errors,          
         }
         return Response(data) 
+
+@csrf_exempt
+@api_view(["GET"])
+def tracking(request):
+    documents = Document.objects.filter(creator_id=request.user.id)
+    # return Response(latest_post_list, status=HTTP_200_OK)
+    # the many param informs the serializer that it will be serializing more than a single article.
+    serializer = DocumentSerializer(documents, many=True)
+    return Response({"documents": serializer.data})
+
 
 class DocumentList(generics.ListCreateAPIView):
     queryset = Document.objects.all()

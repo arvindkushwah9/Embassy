@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView # new
 from .views import login, sample_api, get_profile, news_api, contact, services, profile, notification, tracking, passport_renewal, passport_apply, terms_condition, faq
-from documents.views import create_document
+from documents.views import create_document, tracking
 api_urlpatterns = [
     path('accounts/', include('rest_registration.api.urls')),
 ]
@@ -48,6 +48,7 @@ urlpatterns = [
     path('api/v1/get_profile', get_profile),
     path('api/v1/', include('documents.urls')),    
     path('api/v1/documents/create_document/', create_document),
+    path('api/v1/tracking', tracking),
 
 
 ]
