@@ -35,5 +35,5 @@ class DocumentCreateSerializer(serializers.Serializer):
 class DocumentSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('id', 'title', 'image', 'created_at', 'updated_at',)
+        fields = ('id','title', 'approved', 'image', 'created_at')
         model = models.Document

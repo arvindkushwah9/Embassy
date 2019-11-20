@@ -59,13 +59,17 @@ python3 manage.py runserver
 
 
 ## Upload Doc
-`PUT or PATCH https://es-embassy.herokuapp.com/api/v1/documents/create_document/`  
+`POST https://es-embassy.herokuapp.com/api/v1/documents/create_document/`  
 `Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95`
 `Parameters:{
     "title": "title", 
     "image": "image.png in multipart" 
-}
+}` 
 
+
+## Tracking
+`GET https://es-embassy.herokuapp.com/api/v1/tracking`  
+`Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95` 
 
 
 ## Get News
