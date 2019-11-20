@@ -1,32 +1,13 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
 {% load staticfiles%}
-{% block title %}Tracking{% endblock %}
+{% block title %}Notification{% endblock %}
 {% block content %}
   <style>
-    body {font-family: Arial, Helvetica, sans-serif;}
-    * {box-sizing: border-box;
-
-    }
-    .container{
-      padding: 16px;
-    }
     .modal-content {
       margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 1px solid #888;
       width: 80%; /* Could be more or less, depending on screen size */
-    }
-    .button_cen {
-      margin: 8px 0;
-      width: 100%;
-      opacity: 0.9;
-    }
-    p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
     }
   </style>
   <div class="wrapper">
@@ -36,7 +17,7 @@
       <!--        here i removed the class name and I added the sticky-top -->
       <div class="sticky-top">
         <div class="sidebar-header sticky-top">
-          <a href="{% url 'home' %}"> <img src="{% static 'icons/esa.png' %}" style="width: 160px"; height="160px" ></a>
+          <a href="{% url 'home' %}"> <img src="{% static 'icons/esa.png' %}" style="width: 160px" ; height="160px" ></a>
           <h6>Embassy Service App </h6>
           <span>  <b>مرحبـــاً بك في موقع خدمات السفارة </b> </span>
         </div>
@@ -67,7 +48,7 @@
       </ul>
       <ul class="list-unstyled CTAs">
         <li>
-          <a href="{% url 'logout' %}" class="download">logout</a>
+          <a href="{% url 'logout' %}" class="download">Logout</a>
         </li>
       </ul>
     </nav>
@@ -86,61 +67,25 @@
           <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
         </div>
       </nav>
-      <!--Carousel Wrapper-->
-      <!-- Tracking Application   -->
+      <!-- Passport Renewal  -->
       <div id="services" class="container-fluid text-center " style="margin-top: 5%">
         <div style="margin-bottom: 20px; margin-left: 40%">
           <div class="row slideanim">
             <div class="col-sm-4">
-              <span > <img class="glyphicon glyphicon-lock small-logo" src="{% static 'icons/TR.gif' %}" style="width: 150px ; height: 150px"> </span>
-              <h4>Track Your Application</h4>
-              <h6 style="color: white"> your application has sent to reviewers ... will reply to you within two working days   </h6>
+              <span > <img class="glyphicon glyphicon-lock small-logo" src="{% static 'icons/notif.gif' %}" style="width: 220px ; height: 220px"> </span>
+              <h4>Your Notification</h4>
+              <h6 style="color: white"> Stay updated with the notification  </h6>
             </div>
           </div>
         </div>
+        
         <form class="modal-content " action="/action_page.php" style="background:gainsboro">
           <div class="container">
-            <h1>Tracking </h1>
-            <p>Upload all your files here according to PDF specifications   <b>Passport Renewal Requirements </b> <br> then track your application in the tracking page to keep updated   </p>
-            <br>
-            <!--            table for tracking -->
-            <div class="container">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Application </th>
-                    <th>Status </th>
-                    <th>Note</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for document in documents %}
-                    <tr>
-                      <td>Passport Renewal</td>
-                      {% if document.approved %}
-                        <td>Approved </td>
-                      {% else %}
-                        <td>Pending</td>
-                      {% endif %}
-                      <td>{{ document.title }}</td>
-                    </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
+            <h1>Notification Feature will be available in FYP2 </h1>
+            <div class="clearfix">
             </div>
-            <a href="{% url 'home' %}"> <button type="button" class="btn btn-primary button_cen">Back </button> </a>
           </div>
         </form>
-      </div>
-      <br><br><br>
-      <br><br><br>
-      <!--floating button for notifications -->
-      <a href="/notifications" class="float">
-      <i class="fa fa-envelope my-float"></i>
-      </a>
-      <div class="label-container">
-        <div class="label-text">notifications </div>
-        <i class="fa fa-play label-arrow"></i>
       </div>
     </div>
   </div>
