@@ -8,6 +8,10 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 from rest_framework import generics
+from .serializers import NotificationSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
   notifications = Notification.objects.filter(receiver_id=request.user.id)
@@ -60,3 +64,12 @@ def destroy(request, id):
     notification = Notification.objects.get(id=id)  
     notification.delete()  
     return redirect("/notifications")  
+
+@csrf_exempt
+@api_view(["GET"])
+def notifications(request):
+    notifications = Notification.objects.filter(creator_id=request.user.id)
+    # return Response(latest_post_list, status=HTTP_200_OK)
+    # the many param informs the serializer that it will be serializing more than a single article.
+    serializer = NotificationSerializer(notifications, many=True)
+    return Response({"notifications": serializer.data})

@@ -75,7 +75,7 @@ def profile(request):
 def notification(request):
   return render(request, 'notification.html')
 
-def tracking(request):
+def tracking_view(request):
   documents = Document.objects.filter(creator_id=request.user.id)
   context = {'documents': documents}
   return render(request, 'tracking.html', context)
