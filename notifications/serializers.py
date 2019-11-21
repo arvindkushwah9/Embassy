@@ -7,10 +7,8 @@ from django.utils import timezone
 # normal serializer [similar to forms.Form]
 class NotificationCreateSerializer(serializers.Serializer):
     title= serializers.CharField(max_length=200)
-    image= serializers.ImageField()
     pub_date= serializers.DateTimeField(default=timezone.now())
     update_date= serializers.DateTimeField(default=timezone.now())
-    approved = serializers.BooleanField(default=False)
     creator_id= serializers.IntegerField(default=1)
     updater_id= serializers.IntegerField(default=1)
     # is called if we save serializer if it do not have an instance
@@ -28,5 +26,5 @@ class NotificationCreateSerializer(serializers.Serializer):
 class NotificationSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('id','title', 'approved', 'creator', 'created_at')
+        fields = ('id','title', 'created_at', 'creator_id')
         model = models.Notification
