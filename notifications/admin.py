@@ -4,7 +4,7 @@ from django.utils.html import format_html
 
 class NotificationAdmin(admin.ModelAdmin):
   readonly_fields = ('id',)
-  list_display = ('title', 'created_at', 'creator')   
+  list_display = ('title', 'created_at', 'creator', 'receiver')   
   
 
 admin.site.register(Notification, NotificationAdmin)

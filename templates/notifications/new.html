@@ -1,0 +1,120 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block title %}Profile{% endblock %}
+{% block content %}
+	<style>
+		body {font-family: Arial, Helvetica, sans-serif;}
+    * {box-sizing: border-box;
+
+    }
+	</style>
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <!--logo with title -->
+      <!--        here i removed the class name and I added the sticky-top -->
+      <div class="sticky-top">
+        <div class="sidebar-header sticky-top">
+          <a href="{% url 'home' %}"> <img src="{% static 'icons/esa.png' %}" style="width: 160px" ; height="160px" ></a>
+          <h6>Embassy Service App </h6>
+          <span>  <b>مرحبـــاً بك في موقع خدمات السفارة </b> </span>
+        </div>
+      </div>
+      <ul class="list-unstyled components">
+        <li >
+          <a href="/news">News </a>
+        </li>
+        <li>
+          <a href="/services">Services </a>
+        </li>
+        <li>
+          <a href="/profile" >Profile</a>
+        </li>
+        <li>
+          <a href="#">Ad Market </a>
+        </li>
+        <li>
+          <a href="/email">Contact us </a>
+        </li>
+        <li>
+          <a href="/tracking">Tracking </a>
+        </li>
+      </ul>
+      <ul class="list-unstyled CTAs">
+        <li> <a href="/terms_condition" style="font-size: 12px"> Terms and Conditions </a></li>
+        <li> <a href="/faq" style="font-size: 12px"> FAQ </a></li>
+      </ul>
+      <ul class="list-unstyled CTAs">
+        <li>
+          <a href="{% url 'logout' %}" class="download">logout</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Page Content Header -->
+    <div id="content">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+          </button>
+          <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-align-justify"></i>
+          </button> -->
+          <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
+        </div>
+      </nav>
+      <div class="container">
+        <h1>Add Notification</h1>
+        <hr>
+        <div class="row">
+          <!-- edit form column -->
+          <div class="col-md-9 personal-info">
+            
+            <form class="form-horizontal" method="post" action="/notifications/new">
+            	{% csrf_token %}
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Title </label>
+                <div class="col-lg-8">                       
+                  <input class="form-control" type="text" name="title"required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Receiver User </label>
+                <div class="col-lg-8">
+                	<select name="receiver" class="form-control" required>
+                		<option value="">Select</option>
+								    {% for user in users %}
+							        <option value="{{ user.id }}">{{ user.username }}</option>
+								    {% endfor %}
+									</select>
+                  <!-- <input class="form-control" type="text" value="{{user.passport_number}}"> -->
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                  <input type="submit" class="btn btn-primary" value="Send">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <br><br><br>
+      <br><br><br>
+      <!--floating button for notifications -->
+      <a href="/notifications" class="float">
+      <i class="fa fa-envelope my-float"></i>
+      </a>
+      <div class="label-container">
+        <div class="label-text">notifications </div>
+        <a href="/notifications"><i class="fa fa-play label-arrow"></i></a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

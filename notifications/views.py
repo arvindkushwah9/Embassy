@@ -5,10 +5,12 @@ from .models import Notification
 from django.template import loader
 from .forms import NotificationForm
 from datetime import datetime
+from django.contrib.auth.models import User
+
 from rest_framework import generics
 
 def index(request):
-  notifications = Notification.objects.all()
+  notifications = Notification.objects.filter(receiver_id=request.user.id)
   context = {'notifications': notifications}
   return render(request, 'notifications/index.html', context)
 
@@ -30,10 +32,13 @@ def new(request):
           instance.updater_id = user.id
           instance.pub_date = datetime.now()
           instance.update_date = datetime.now()
+          instance.receiver_id = request.POST['receiver']
           instance.save()
           # form.save()
           return redirect('/notifications')
-  return render(request, "notifications/new.html", {'form': form})
+  users = User.objects.all()
+  context = {'users': users}
+  return render(request, "notifications/new.html", context)
 
 def show(request):  
     notifications = Notification.objects.all()  
