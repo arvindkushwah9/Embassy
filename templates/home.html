@@ -54,6 +54,7 @@
         	{% if user.is_authenticated %}
         	  <li >
             <a  href="{% url 'logout' %}" class="download">Logout</a>
+            <a href="{% url 'password_reset' %}" class="download">Reset password</a>
 	          </li>
 	         
         	{% else %}
