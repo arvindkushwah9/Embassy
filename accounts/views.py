@@ -2,6 +2,7 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from  .forms import SignUpForm
+from django.contrib import messages
 # from django.contrib.auth.forms import UserCreationForm
 
 def SignUp(request):
@@ -13,6 +14,7 @@ def SignUp(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            messages.success(request, 'You have signed up successfully')
             return redirect('home')
     else:
         form = SignUpForm()
