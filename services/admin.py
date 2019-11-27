@@ -4,7 +4,7 @@ from django.utils.html import format_html
 
 class ServiceAdmin(admin.ModelAdmin):
   readonly_fields = ('id',)
-  list_display = ('title', 'description', 'created_at', 'creator')   
+  list_display = ('title','image', 'description', 'created_at', 'creator')   
   
 
 admin.site.register(Service, ServiceAdmin)
