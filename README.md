@@ -81,6 +81,15 @@ python3 manage.py runserver
 `GET https://es-embassy.herokuapp.com/api/v1/notifications` 
 `Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95`
 
+
+## Create Service 
+`POST https://es-embassy.herokuapp.com/api/v1/services/create_service/`   
+`Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95`
+`Parameters:{ 
+    "title": "title", 
+    "description": "idescription here" 
+}` 
+
 ## Auth API Paths 
 /api/login	esa_backend.views.login	  
 /api/sample_api	esa_backend.views.sample_api	 

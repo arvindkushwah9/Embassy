@@ -25,5 +25,5 @@ class ServiceCreateSerializer(serializers.Serializer):
 class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('id','description', 'created_at','creator_id')
+        fields = ('id', 'title','description', 'created_at','creator_id')
         model = models.Service
