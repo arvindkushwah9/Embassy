@@ -109,9 +109,11 @@
                 </div>
               </div>
             </div>
-            
-            <a href="/services/new"> 
+             {% if user.is_superuser %}            
+               <a href="/services/new"> 
               <button type="button" class="btn btn-success button_cen">Add Service</button> </a>
+             {% endif %}
+          
             <div class="clearfix">
               <a href="{% url 'home' %}"> <button type="button" class="btn btn-primary button_cen" >Cancel</button> </a>
               <!--            <a href="Main.html"> <button type="button" class="signinbtn">Sign in</button> </a>-->
