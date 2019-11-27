@@ -8,6 +8,7 @@ from django.utils import timezone
 class ServiceCreateSerializer(serializers.Serializer):
     title= serializers.CharField(max_length=200)
     description= serializers.CharField()
+    image= serializers.ImageField()
     creator_id= serializers.IntegerField(default=1)
     updater_id= serializers.IntegerField(default=1)
     # is called if we save serializer if it do not have an instance
@@ -25,5 +26,5 @@ class ServiceCreateSerializer(serializers.Serializer):
 class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('id', 'title','description', 'created_at','creator_id')
+        fields = ('id', 'title', 'image','description', 'created_at','creator_id')
         model = models.Service

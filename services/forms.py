@@ -6,7 +6,7 @@ from django.forms import ModelForm
 class ServiceForm(ModelForm):
     class Meta:
         model = Service
-        fields = ['title', 'description']
+        fields = ['title', 'description', 'image']
 
     def __init__(self, *args, **kwargs):
         # first call parent's constructor
