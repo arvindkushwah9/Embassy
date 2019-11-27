@@ -20,6 +20,12 @@ class AdCreateSerializer(serializers.Serializer):
        instance.__dict__.update(validated_data)       
        instance.save()
        return instance
+    def __init__(self, *args, **kwargs):
+        # first call parent's constructor
+        super(AdCreateSerializer, self).__init__(*args, **kwargs)
+        # there's a `fields` property now
+        self.fields['title'].required = False
+        self.fields['image'].required = False
 
 
 
