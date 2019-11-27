@@ -13,8 +13,8 @@ class AdCreateSerializer(serializers.Serializer):
     updater_id= serializers.IntegerField(default=1)
     # is called if we save serializer if it do not have an instance
     def create(self, validated_data):
-       Ad = Ad.objects.create(**validated_data)     
-       return Ad
+       ad = Ad.objects.create(**validated_data)     
+       return ad
     # is called if we save serializer if it have an instance
     def update(self, instance, validated_data):
        instance.__dict__.update(validated_data)       
