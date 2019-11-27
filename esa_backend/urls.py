@@ -19,6 +19,7 @@ from django.views.generic.base import TemplateView # new
 from .views import login, sample_api, get_profile, news_api, contact, services, profile, notification, tracking_view, passport_renewal, passport_apply, terms_condition, faq
 from documents.views import create_document, tracking
 from notifications.views import notifications
+from services.views import create_service
 api_urlpatterns = [
     path('accounts/', include('rest_registration.api.urls')),
 ]
@@ -27,6 +28,7 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('documents/', include('documents.urls')),
     path('notifications/', include('notifications.urls')),
+    path('services/', include('services.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -52,6 +54,8 @@ urlpatterns = [
     path('api/v1/documents/create_document/', create_document),
     path('api/v1/tracking', tracking),
     path('api/v1/notifications', notifications),
+    path('api/v1/', include('services.urls')), 
+    path('api/v1/services/create_service/', create_service),
 
 
 ]

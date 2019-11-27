@@ -45,6 +45,11 @@
             <li>
               <a href="/tracking">Tracking </a>
             </li>
+            {% if user.is_superuser %}            
+              <li>
+                <a href="/notifications">Notifications </a>
+              </li>
+             {% endif %}
           </ul>
           <ul class="list-unstyled CTAs">
             <li> <a href="/faq" style="font-size: 12px"> FAQ </a></li>

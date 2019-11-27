@@ -1,15 +1,14 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
 {% load staticfiles%}
-{% block title %}Notification{% endblock %}
+{% block title %}Profile{% endblock %}
 {% block content %}
-  <style>
-    .modal-content {
-      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-      border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
+	<style>
+		body {font-family: Arial, Helvetica, sans-serif;}
+    * {box-sizing: border-box;
+
     }
-  </style>
+	</style>
   <div class="wrapper">
     <!-- Sidebar Holder -->
     <nav id="sidebar">
@@ -47,7 +46,7 @@
       </ul>
       <ul class="list-unstyled CTAs">
         <li>
-          <a href="{% url 'logout' %}" class="download">Logout</a>
+          <a href="{% url 'logout' %}" class="download">logout</a>
           <a href="{% url 'password_reset' %}" class="download">Forgot password</a>
         </li>
       </ul>
@@ -67,30 +66,50 @@
           <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
         </div>
       </nav>
-      <!-- Passport Renewal  -->
-      <div id="services" class="container-fluid text-center " style="margin-top: 5%">
-        <div style="margin-bottom: 20px; margin-left: 40%">
-          <div class="row slideanim">
-            <div class="col-sm-4">
-              <span > <img class="glyphicon glyphicon-lock small-logo" src="{% static 'icons/notif.gif' %}" style="width: 220px ; height: 220px"> </span>
-              <h4>Your Notification</h4>
-              <h6 style="color: white"> Stay updated with the notification  </h6>
-            </div>
-
+      <div class="container">
+        <h1>Add Service</h1>
+        <hr>
+        <div class="row">
+          <!-- edit form column -->
+          <div class="col-md-9 personal-info">
+            
+            <form class="form-horizontal" method="post" action="/services/new">
+            	{% csrf_token %}
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Title </label>
+                <div class="col-lg-8">                       
+                  <input class="form-control" type="text" placeholder="Title" name="title"required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Receiver User </label>
+                <div class="col-lg-8">
+               
+                  <input class="form-control" type="text" placeholder="description" name="description" >
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                  <input type="submit" class="btn btn-primary" value="Save">
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-        
-        <form class="modal-content " action="/action_page.php" style="background:gainsboro">
-          <div class="container">
-            <h1>Notification Feature will be available in FYP2 </h1>
-            <div class="clearfix">
-              <a href="/notifications/new" class="btn btn-primary">Send Notification </a>
-
-            </div>
-          </div>
-        </form>
+      </div>
+      <hr>
+      <br><br><br>
+      <br><br><br>
+      <!--floating button for services -->
+      <a href="/services" class="float">
+      <i class="fa fa-envelope my-float"></i>
+      </a>
+      <div class="label-container">
+        <div class="label-text">services </div>
+        <a href="/services"><i class="fa fa-play label-arrow"></i></a>
       </div>
     </div>
   </div>
-
 {% endblock %}

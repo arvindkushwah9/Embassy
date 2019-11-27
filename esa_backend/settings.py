@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'rest_registration',
     'sendemail.apps.SendemailConfig',
     'documents.apps.DocumentsConfig',
-    'notifications.apps.NotificationsConfig'
+    'notifications.apps.NotificationsConfig',
+    'services.apps.ServicesConfig'
 
 ]
 
