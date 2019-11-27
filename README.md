@@ -87,7 +87,17 @@ python3 manage.py runserver
 `Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95`
 `Parameters:{ 
     "title": "title", 
-    "description": "idescription here" 
+    "description": "idescription here" ,
+    "image": "image.png in multipart" 
+}` 
+
+## Create Ads 
+`POST https://es-embassy.herokuapp.com/api/v1/ads/create_ad/`   
+`Header: Authorization: Token 2e9999174948645bde059a622f63abf030704d95`
+`Parameters:{ 
+    "title": "title", 
+    "description": "idescription here" ,
+    "image": "image.png in multipart" 
 }` 
 
 ## Auth API Paths 

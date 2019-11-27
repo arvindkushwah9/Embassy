@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'sendemail.apps.SendemailConfig',
     'documents.apps.DocumentsConfig',
     'notifications.apps.NotificationsConfig',
-    'services.apps.ServicesConfig'
+    'services.apps.ServicesConfig',
+    'ads.apps.AdsConfig'
 
 ]
 
