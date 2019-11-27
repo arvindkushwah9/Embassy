@@ -24,7 +24,7 @@ class ServiceCreateSerializer(serializers.Serializer):
         # first call parent's constructor
         super(ServiceCreateSerializer, self).__init__(*args, **kwargs)
         # there's a `fields` property now
-        self.fields['title'].required = False
+        self.fields['description'].required = False
         self.fields['image'].required = False
 
 
