@@ -13,3 +13,4 @@ class ServiceForm(ModelForm):
         super(ServiceForm, self).__init__(*args, **kwargs)
         # there's a `fields` property now
         self.fields['title'].required = False
+        self.fields['image'].required = False
