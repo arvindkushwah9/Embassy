@@ -1,7 +1,7 @@
 # accounts/views.py
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from  .forms import SignUpForm
+from  .forms import SignUpForm, UpdateProfile
 from django.contrib import messages
 # from django.contrib.auth.forms import UserCreationForm
 
@@ -19,3 +19,15 @@ def SignUp(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+def profile_update(request):  
+    if request.method == 'POST':
+        form = UpdateProfile(request.POST, instance = request.user)
+
+        if form.is_valid():
+          form.save()
+          messages.success(request, 'You have successfully updated')
+          return redirect('home')
+    else:
+        form = SignUpForm()  
+    return render(request, 'profile.html') 
