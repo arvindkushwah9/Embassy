@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'documents.apps.DocumentsConfig',
     'notifications.apps.NotificationsConfig',
     'services.apps.ServicesConfig',
-    'ads.apps.AdsConfig'
+    'ads.apps.AdsConfig',
 
 ]
 
@@ -83,6 +83,16 @@ WSGI_APPLICATION = 'esa_backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+
+
+# Sqlite Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(PROJECT_DIR, 'esa_backend.db'),
+#     }
+# }
+
 
 DATABASES = {
     'default': {
@@ -173,3 +183,5 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+# AUTH_PROFILE_MODULE = "esa_backend.UserProfile"
