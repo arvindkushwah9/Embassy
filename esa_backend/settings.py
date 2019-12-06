@@ -85,7 +85,6 @@ WSGI_APPLICATION = 'esa_backend.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-Sqlite Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
