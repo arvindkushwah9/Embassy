@@ -33,10 +33,10 @@ def profile_update(request):
 
           #Save userinfo record
           # uinfo = form.get_profile()
-          # u = User.objects.get(id = request.user.id)
-          # uinfo = UserProfile.objects.get_or_create(user=request.user)
-          # uinfo =  UserProfile.objects.get(user = u)
-          uinfo = request.user.profile
+          u = User.objects.get(id = request.user.id)
+          uinfo = UserProfile.objects.get_or_create(user=request.user)
+          uinfo =  UserProfile.objects.get(user = u)
+          # uinfo = request.user.profile
           uinfo.passport_number = request.POST.get('passport_number')
           uinfo.phone_number = request.POST.get('phone_number')
           uinfo.save()
