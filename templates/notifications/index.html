@@ -79,6 +79,22 @@
 
           </div>
         </div>
+        <div class="container">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Notification</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for notification in notifications %}
+                    <tr>                    
+                      <td>{{ notification.title }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
         
         <form class="modal-content " action="/action_page.php" style="background:gainsboro">
           <div class="container">
