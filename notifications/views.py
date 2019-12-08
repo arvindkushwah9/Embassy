@@ -68,7 +68,7 @@ def destroy(request, id):
 @csrf_exempt
 @api_view(["GET"])
 def notifications(request):
-    notifications = Notification.objects.filter(creator_id=request.user.id)
+    notifications = Notification.objects.filter(receiver_id=request.user.id)
     # return Response(latest_post_list, status=HTTP_200_OK)
     # the many param informs the serializer that it will be serializing more than a single article.
     serializer = NotificationSerializer(notifications, many=True)
