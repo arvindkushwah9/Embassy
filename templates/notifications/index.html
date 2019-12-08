@@ -95,16 +95,18 @@
                 </tbody>
               </table>
             </div>
-        
-        <form class="modal-content " action="/action_page.php" style="background:gainsboro">
-          <div class="container">
-            <h1>Notification Feature will be available in FYP2 </h1>
-            <div class="clearfix">
-              <a href="/notifications/new" class="btn btn-primary">Send Notification </a>
+         {% if user.is_superuser %} 
+          <form class="modal-content " action="/action_page.php" style="background:gainsboro">
+            <div class="container">
+              <h1>Notification Feature will be available in FYP2 </h1>
+              <div class="clearfix">
+                <a href="/notifications/new" class="btn btn-primary">Send Notification </a>
 
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+       {% endif %}
+
       </div>
     </div>
   </div>
