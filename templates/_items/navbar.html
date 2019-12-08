@@ -1,0 +1,69 @@
+ {% load staticfiles%}
+ <nav id="sidebar" class="sticky-top">
+        <div class="sidebar-header sticky-top">
+          <a href="{% url 'home' %}">
+
+            <img src="{% static 'icons/esa.png' %}" style="width: 160px"; height="160px">
+
+          </a>
+          <h6>Embassy Service App </h6>
+          {% if user.is_authenticated %}
+            <span>  <b>مرحبـــاً بك في موقع خدمات السفارة </b> </span>
+          {% else %}
+            <span>  <b>مرحبـــا بك في موقع خدمات السفارة اليمنية في كوالالمبور</b> </span>
+          {% endif %}
+        </div>
+        {% if user.is_authenticated %}
+          <ul class="list-unstyled components">
+            <li >
+              <a href="/news">News </a>
+            </li>
+
+            <li>
+              <a href="/services">Services </a>
+            </li>
+
+            <li>
+              <a href="/profile" >Profile</a>
+            </li>
+
+            <li>
+              <a href="/ads">Ad Market </a>
+            </li>
+
+            <li>
+              <a href="/email">Contact us </a>
+            </li>
+
+            <li>
+              <a href="/tracking">Tracking </a>
+            </li>
+            {% if user.is_superuser %}            
+              <li>
+                <a href="/notifications">Notifications </a>
+              </li>
+             {% endif %}
+          </ul>
+          <ul class="list-unstyled CTAs">
+            <li> <a href="/faq" style="font-size: 12px"> FAQ </a></li>
+          </ul>
+        {% endif %}
+        <ul class="list-unstyled CTAs">
+          {% if user.is_authenticated %}
+            <li >
+            <a  href="{% url 'logout' %}" class="download">Logout</a>
+            <a href="{% url 'password_reset' %}" class="download">Forgot password</a>
+            </li>
+           
+          {% else %}
+             <li >
+            <a  href="{% url 'login' %}" class="download">Sign in </a>
+            </li>
+            <li >
+              <a href="{% url 'signup' %}" class="download">Sign up </a>
+            </li>
+          {% endif %}
+        
+          <!--                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>-->
+        </ul>
+      </nav>

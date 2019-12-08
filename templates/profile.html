@@ -4,47 +4,9 @@
 {% block title %}Profile{% endblock %}
 {% block content %}
   <div class="wrapper">
-    <!-- Sidebar Holder -->
-    <nav id="sidebar">
-      <!--logo with title -->
-      <!--        here i removed the class name and I added the sticky-top -->
-      <div class="sticky-top">
-        <div class="sidebar-header sticky-top">
-          <a href="{% url 'home' %}"> <img src="{% static 'icons/esa.png' %}" style="width: 160px" ; height="160px" ></a>
-          <h6>Embassy Service App </h6>
-          <span>  <b>مرحبـــاً بك في موقع خدمات السفارة </b> </span>
-        </div>
-      </div>
-      <ul class="list-unstyled components">
-        <li >
-          <a href="/news">News </a>
-        </li>
-        <li>
-          <a href="/services">Services </a>
-        </li>
-        <li>
-          <a href="/profile" >Profile</a>
-        </li>
-        <li>
-          <a href="/ads">Ad Market </a>
-        </li>
-        <li>
-          <a href="/email">Contact us </a>
-        </li>
-        <li>
-          <a href="/tracking">Tracking </a>
-        </li>
-      </ul>
-      <ul class="list-unstyled CTAs">
-        <li> <a href="/terms_condition" style="font-size: 12px"> Terms and Conditions </a></li>
-        <li> <a href="/faq" style="font-size: 12px"> FAQ </a></li>
-      </ul>
-      <ul class="list-unstyled CTAs">
-        <li>
-          <a href="{% url 'logout' %}" class="download">logout</a>
-        </li>
-      </ul>
-    </nav>
+    {% block navbar %}
+        {% include  '_items/navbar.html' %}
+    {% endblock %}
     <!-- Page Content Header -->
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">

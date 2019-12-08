@@ -1,7 +1,7 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
 {% load staticfiles%}
-{% block title %}Notification{% endblock %}
+{% block title %}News{% endblock %}
 {% block content %}
   <style>
     .modal-content {
@@ -11,9 +11,10 @@
     }
   </style>
   <div class="wrapper">
-   {% block navbar %}
+    {% block navbar %}
         {% include  '_items/navbar.html' %}
     {% endblock %}
+  
     <!-- Page Content Header -->
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
@@ -35,22 +36,24 @@
           <div class="row slideanim">
             <div class="col-sm-4">
               <span > <img class="glyphicon glyphicon-lock small-logo" src="{% static 'icons/notif.gif' %}" style="width: 220px ; height: 220px"> </span>
-              <h4>Your Notification</h4>
-              <h6 style="color: white"> Stay updated with the notification  </h6>
+              <h4>Your News</h4>
+              <h6 style="color: white"> Stay updated with the News  </h6>
             </div>
 
           </div>
         </div>
-        
-        <form class="modal-content " action="/action_page.php" style="background:gainsboro">
-          <div class="container">
-            <h1>Notification Feature will be available in FYP2 </h1>
-            <div class="clearfix">
-              <a href="/notifications/new" class="btn btn-primary">Send Notification </a>
-
+        <div class="container">
+        	<div class="col-md-10 blogShort">
+                     <h1>{{post.title}}</h1>
+                     <img src="{{post.image}}" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
+                     
+                         <em>This snippet use <a href="http://bootsnipp.com/snippets/featured/sexy-sidebar-navigation" target="_blank">Sexy Sidebar Navigation</a></em>
+                     <article><p>
+                         {{post.description}}
+                         </p></article>
+                 </div>
             </div>
-          </div>
-        </form>
+     
       </div>
     </div>
   </div>

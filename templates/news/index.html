@@ -1,9 +1,82 @@
-{% if latest_post_list %}
-    <ul>
-    {% for post in latest_post_list %}
-        <li><a href="/news/{{ post.id }}/">{{ post.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+{% load staticfiles%}
+{% block title %}News{% endblock %}
+{% block content %}
+  <style>
+    .modal-content {
+      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+    }
+  </style>
+  <div class="wrapper">
+    {% block navbar %}
+        {% include  '_items/navbar.html' %}
+    {% endblock %}
+  
+    <!-- Page Content Header -->
+    <div id="content">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+          </button>
+          <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-align-justify"></i>
+          </button> -->
+          <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
+        </div>
+      </nav>
+      <!-- Passport Renewal  -->
+      <div id="services" class="container-fluid text-center " style="margin-top: 5%">
+        <div style="margin-bottom: 20px; margin-left: 40%">
+          <div class="row slideanim">
+            <div class="col-sm-4">
+              <span > <img class="glyphicon glyphicon-lock small-logo" src="{% static 'icons/notif.gif' %}" style="width: 220px ; height: 220px"> </span>
+              <h4>Your News</h4>
+              <h6 style="color: white"> Stay updated with the News  </h6>
+            </div>
+
+          </div>
+        </div>
+        <div class="container">
+        	{% if latest_post_list %}
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>News</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for post in latest_post_list %}
+                    <tr>                    
+                      <td><a href="/news/{{ post.id }}/">{{ post.title }}</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+						    <p>No News are available.</p>
+						{% endif %}
+            </div>
+         {% if user.is_superuser %} 
+          <form class="modal-content " action="/news" style="background:gainsboro">
+            <div class="container">
+              <h1>News Feature will be available in FYP2 </h1>
+              <div class="clearfix">
+                <a href="/news/new" class="btn btn-primary">Create News </a>
+
+              </div>
+            </div>
+          </form>
+       {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

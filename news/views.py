@@ -15,7 +15,9 @@ def index(request):
   return render(request, 'news/index.html', context)
 
 def show(request, post_id):
-  return HttpResponse("You're looking at post %s." % post_id)
+  post = Post.objects.get(id=post_id)
+  return render(request,"news/show.html",{'post':post})  
+
 
 def update(request, post_id):
   response = "You're looking at the results of post %s."
