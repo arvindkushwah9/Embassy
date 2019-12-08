@@ -9,8 +9,6 @@ class ServiceCreateSerializer(serializers.Serializer):
     title= serializers.CharField(max_length=200)
     description= serializers.CharField()
     image= serializers.ImageField()
-    creator_id= serializers.IntegerField(default=1)
-    updater_id= serializers.IntegerField(default=1)
     # is called if we save serializer if it do not have an instance
     def create(self, validated_data):
        service = Service.objects.create(**validated_data)     

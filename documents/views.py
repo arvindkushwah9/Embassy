@@ -81,9 +81,8 @@ def create_document(request):
     print("User", request.user.id)
     if serializer.is_valid():
         # user = Document.objects.create(serializer.validated_data)
-        serializer.creater_id = request.user.id 
-        serializer.save()
-        return Response({"message": "Document created"}) 
+        serializer.save(creator=request.user, updater=request.user)        
+        return Response({"message": "Document createdwwwwwwwww"}) 
     else:
         data = {
           "error": True,

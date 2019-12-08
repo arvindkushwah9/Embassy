@@ -113,3 +113,11 @@ python3 manage.py runserver
 /api/v1/accounts/send-reset-password-link/	rest_registration.api.views.reset_password.send_reset_password_link	rest_ registration:send-reset-password-link 
 /api/v1/accounts/verify-email/	rest_registration.api.views.register_email.verify_email	rest_registration:verify-email
 /api/v1/accounts/verify-registration/	rest_registration.api.views.register.verify_registration	rest_ registration:verify-registration 
+
+
+## Generate ERD
+python3 manage.py graph_models -a > output.dot 
+
+brew install graphviz
+
+dot -Tpng output.dot -o output.png 

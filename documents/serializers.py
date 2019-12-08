@@ -11,8 +11,13 @@ class DocumentCreateSerializer(serializers.Serializer):
     pub_date= serializers.DateTimeField(default=timezone.now())
     update_date= serializers.DateTimeField(default=timezone.now())
     approved = serializers.BooleanField(default=False)
-    creator_id= serializers.IntegerField(default=1)
-    updater_id= serializers.IntegerField(default=1)
+
+    # def save(self):
+    #   print("save Data",self)
+    #   # creator = self.context['request'].user
+    #   # title = self.validated_data['title']
+    #   # image = self.validated_data['image']
+
     # is called if we save serializer if it do not have an instance
     def create(self, validated_data):
        document = Document.objects.create(**validated_data)     

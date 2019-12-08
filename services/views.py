@@ -78,8 +78,7 @@ def create_service(request):
     print("User", request.user.id)
     if serializer.is_valid():
         # user = Document.objects.create(serializer.validated_data)
-        serializer.creater_id = request.user.id 
-        serializer.save()
+        serializer.save(creator=request.user, updater=request.user)        
         return Response({"message": "Document created"}) 
     else:
         data = {
