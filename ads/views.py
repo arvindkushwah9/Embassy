@@ -14,7 +14,8 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
-  ads = Ad.objects.filter(creator_id=request.user.id)
+  # ads = Ad.objects.filter(creator_id=request.user.id)
+  ads = Ad.objects.all()
   context = {'ads': ads}
   return render(request, 'ads/index.html', context)
 

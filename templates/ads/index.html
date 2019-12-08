@@ -11,47 +11,9 @@
     }
   </style>
   <div class="wrapper">
-    <!-- Sidebar Holder -->
-    <nav id="sidebar">
-      <!--logo with title -->
-      <!--        here i removed the class name and I added the sticky-top -->
-      <div class="sticky-top">
-        <div class="sidebar-header sticky-top">
-          <a href="{% url 'home' %}"> <img src="{% static 'icons/esa.png' %}" style="width: 160px" ; height="160px" ></a>
-          <h6>Embassy Service App </h6>
-          <span>  <b>مرحبـــاً بك في موقع خدمات السفارة </b> </span>
-        </div>
-      </div>
-      <ul class="list-unstyled components">
-        <li >
-          <a href="/news">News </a>
-        </li>
-        <li>
-          <a href="/services">Services </a>
-        </li>
-        <li>
-          <a href="/profile" >Profile</a>
-        </li>
-        <li>
-          <a href="/ads">Ad Market </a>
-        </li>
-        <li>
-          <a href="/email">Contact us </a>
-        </li>
-        <li>
-          <a href="/tracking">Tracking </a>
-        </li>
-      </ul>
-      <ul class="list-unstyled CTAs">
-        <li> <a href="/faq" style="font-size: 12px"> FAQ </a></li>
-      </ul>
-      <ul class="list-unstyled CTAs">
-        <li>
-          <a href="{% url 'logout' %}" class="download">Logout</a>
-          <a href="{% url 'password_reset' %}" class="download">Forgot password</a>
-        </li>
-      </ul>
-    </nav>
+   {% block navbar %}
+        {% include  '_items/navbar.html' %}
+    {% endblock %}
     <!-- Page Content Header -->
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
@@ -79,7 +41,17 @@
 
           </div>
         </div>
+        {% for ad in ads %}
+        <div class="col-md-10 blogShort">
+                     <h1>{{ad.title}}</h1>
+                     <img src="{{ad.image}}" alt="{{ad.title}}" class="pull-left img-responsive thumb margin10 img-thumbnail">                     
+                     <article><p>
+                        {{ad.description}}    
+                         </p></article>        
+                 </div>
+             {% endfor %}                 
         
+         {% if user.is_superuser %} 
         <form class="modal-content " action="/action_page.php" style="background:gainsboro">
           <div class="container">
             <h1>Ads Feature will be available in FYP2 </h1>
@@ -92,6 +64,7 @@
             </div>
           </div>
         </form>
+         {% endif %}
       </div>
     </div>
   </div>
