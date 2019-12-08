@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'notifications.apps.NotificationsConfig',
     'services.apps.ServicesConfig',
     'ads.apps.AdsConfig',
+    'django_extensions'
 
 ]
 
