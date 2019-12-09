@@ -88,7 +88,7 @@
                       <td>{{ document.title }}</td>
                       <td>
                         {% if  document.image %}
-                          <a href="{{ document.image.url}}" >{{ document.image.filename}}</a>
+                          <a href="{{ document.image.url}}" >{{ document.image.filename}}{{ document.image}}</a>
                       {% endif %}
                       </td>
                     </tr>
