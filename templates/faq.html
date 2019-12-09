@@ -1,87 +1,117 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
-{% load staticfiles%}
+{% load staticfiles %}
 {% block title %}Passport Apply{% endblock %}
 {% block content %}
-  <style>
-    body {font-family: Arial, Helvetica, sans-serif;}
-    * {box-sizing: border-box;
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-    }
-    /* Full-width input fields */
-    input[type=text], input[type=password],input[type=number] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-    }
+        * {
+            box-sizing: border-box;
 
-    /* Add a background color when the inputs get focus */
-    input[type=text]:focus, input[type=password]:focus ,input[type=number]:focus{
-      background-color: #ddd;
-      outline: none;
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-      border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
-    }
-    .button_cen {
-      margin: 8px 0;
-      width: 100%;
-      opacity: 0.9;
-    }
-    .container {
-      padding: 16px;
-    }
-    .clearfix::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-    p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
-  }
-  </style>
-  <div class="wrapper">
-    {% block navbar %}
-        {% include  '_items/navbar.html' %}
-    {% endblock %}
-    <!-- Page Content Header -->
-    <div id="content">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-          <button type="button" id="sidebarCollapse" class="navbar-btn">
-          <span></span>
-          <span></span>
-          <span></span>
-          </button>
-          <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-align-justify"></i>
-          </button> -->
-          <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
-        </div>
-      </nav>
-      <!-- Passport Renewal  -->
-      <div id="services" class="container-fluid text-center " style="margin-top: 5%">
-        
-        <div class="modal-content "style="background:gainsboro">
-          <div class="container">
-            <h1>FAQ</h1>
-            <p>FAQ pages have begun to reappear into the priority website checks and improvement areas for SEO experts and marketing professionals alike.<br><b>In no small part, this has been driven by the growth in voice search, mobile search, and personal/home assistants and speakers.</b><br>These predominantly rely on the pre-results (Google Answers and Featured Snippets) and can be targeted specifically with FAQ pages.</p>
-            <div class="clearfix">
-              <a href="{% url 'home' %}"> <button type="button" class="btn btn-primary button_cen">Back </button> </a>
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=password], input[type=number] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* Add a background color when the inputs get focus */
+        input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .button_cen {
+            margin: 8px 0;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.7em;
+            color: #999;
+        }
+    </style>
+    <div class="wrapper">
+        {% block navbar %}
+            {% include  '_items/navbar.html' %}
+        {% endblock %}
+        <!-- Page Content Header -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                    </button> -->
+                    <marquee>Welcome To Embassy Service App <b> ESA </b></marquee>
+                </div>
+            </nav>
+            <!-- Passport Renewal  -->
+            <div id="services" class="container-fluid text-center " style="margin-top: 5%">
+
+                <div class="modal-content " style="background:gainsboro">
+                    <div class="container">
+                        <h1>FAQ</h1>
+                                 <p>
+                        <h5> What are the embassy working hours?</h5>
+                        <b>From Monday - Thursday: 9:00 AM - 4:00 PM
+                            On Friday: 9:00 AM - 11:00 AM</b>
+                        <br> <br>
+
+                        <h5>When should I renew my passport?</h5>
+                        <b>You need to apply for a passport renewal at least three months before the expiration.</b>
+                        <br><br>
+
+                        <h5> How can I contact you?</h5>
+                        <b>You can contact us through the email my.yemenembassy@gmail.com or phone number (+60)
+                            342511793. You can also contact us using the Esa website or mobile app. </b>
+                        <br><br>
+                        <h5>How can I change my email in the ESA account?</h5>
+                        <b>You can change your email easily by signing in to your account, navigate to the profile page
+                            and edit the email address.</b>
+                        </p>
+
+                        <div class="clearfix">
+                            <a href="{% url 'home' %}">
+                                <button type="button" class="btn btn-primary button_cen">Back</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 {% endblock %}

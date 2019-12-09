@@ -1,7 +1,9 @@
 # sendemail/forms.py
 from django import forms
-from services.models import Service
+
 from django.forms import ModelForm
+from services.models import Service
+
 
 class ServiceForm(ModelForm):
     class Meta:

@@ -1,99 +1,116 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
-{% load staticfiles%}
+{% load staticfiles %}
 {% block title %}Services{% endblock %}
 {% block content %}
-  <style>
-    body {font-family: Arial, Helvetica, sans-serif;}
-    * {box-sizing: border-box;
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-    }
-    .container{
-      padding: 16px;
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-      border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
-    }
-    .button_cen {
-    margin: 8px 0;
-    width: 100%;
-    opacity: 0.9;
-}
-  </style>
-  <div class="wrapper">
-    <!-- Sidebar Holder -->
-    {% block navbar %}
-        {% include  '_items/navbar.html' %}
-    {% endblock %}
-    <!-- Page Content Header -->
-    <div id="content">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-          <button type="button" id="sidebarCollapse" class="navbar-btn">
-          <span></span>
-          <span></span>
-          <span></span>
-          </button>
-          <marquee>Welcome To Embassy Service App <b> ESA </b> </marquee>
-        </div>
-      </nav>
-      <!--Carousel Wrapper-->
-      <!-- Tracking Application   -->
-      <div id="services2" class="container-fluid text-center " style="margin-top: 5%">
-        <form class="modal-content " action="/action_page.php">
-          <div class="container">
-            <!-- Container (Services Section) -->
-            <div id="services" class="container-fluid text-center " style="margin-top: 10%">
-              <div style="margin-bottom: 50px">
-                <h1 style="color: gold">SERVICES</h1>
-                <h6>What we offer</h6>
-              </div>
-              <br>
-              <div class="row slideanim">
-                <div class="col-sm-4">
-                  <span ><a href="/passport_renewal"> <img class="glyphicon glyphicon-lock small-logo" src="{% static 'icons/pasprt.png' %}" style="width: 220px ; height: 220px"></a> </span>
-                  <a href="/passport_renewal">
-                    <h4>Passport Renewal</h4>
-                  </a>
-                  <h6 style="color: gray"> you can easily renew your expired passport  </h6>
+        * {
+            box-sizing: border-box;
+
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .button_cen {
+            margin: 8px 0;
+            width: 100%;
+            opacity: 0.9;
+        }
+    </style>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        {% block navbar %}
+            {% include  '_items/navbar.html' %}
+        {% endblock %}
+        <!-- Page Content Header -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <marquee>Welcome To Embassy Service App <b> ESA </b></marquee>
                 </div>
-                <div class="col-sm-4">
-                  <span >  <img class="glyphicon glyphicon-lock small-logo"  src="{% static 'icons/visa.png' %}" style="width: 150px; height: 150px">  </span>
-                  <h4>Social Visa </h4>
-                  <h6 style="color: gray">click to see more details ..</h6>
+            </nav>
+            <!--Carousel Wrapper-->
+            <!-- Tracking Application   -->
+            <div id="services2" class="container-fluid text-center " style="margin-top: 5%">
+                <form class="modal-content " action="/action_page.php">
+                    <div class="container">
+                        <!-- Container (Services Section) -->
+                        <div id="services" class="container-fluid text-center " style="margin-top: 10%">
+                            <div style="margin-bottom: 50px">
+                                <h1 style="color: gold">SERVICES</h1>
+                                <h6>What we offer</h6>
+                            </div>
+                            <br>
+                            <div class="row slideanim">
+                                <div class="col-sm-4">
+                                    <span><a href="/passport_renewal"> <img class="glyphicon glyphicon-lock small-logo"
+                                                                            src="{% static 'icons/pasprt.png' %}"
+                                                                            style="width: 220px ; height: 220px"></a> </span>
+                                    <a href="/passport_renewal">
+                                        <h4>Passport Renewal</h4>
+                                    </a>
+                                    <h6 style="color: gray"> you can easily renew your expired passport </h6>
+                                </div>
+                                <div class="col-sm-4">
+                     <span> <a href="{% url 'visa' %}">  <img class="glyphicon glyphicon-lock small-logo"
+                                                              src="{% static 'icons/visa.png' %}"
+                                                              style="width: 150px; height: 150px"> </a> </span>
+                                    <a href="{% url 'visa' %}">
+                                        <h4>Social Visa</h4>
+                                    </a>
+                                    <h6 style="color: gray">click to see more details ..</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <span> <img class="glyphicon glyphicon-lock small-logo"
+                                                src="{% static 'icons/s.png' %}" style="width: 220px ; height: 220px"> </span>
+                                    <h4>Another Service</h4>
+                                    <h6 style="color: gray"> click to see more details ..</h6>
+                                </div>
+                            </div>
+                        </div>
+                        {% if user.is_superuser %}
+                            <a href="/services/new">
+                                <button type="button" class="btn btn-success button_cen">Add Service</button>
+                            </a>
+                        {% endif %}
+
+                        <div class="clearfix">
+                            <a href="{% url 'home' %}">
+                                <button type="button" class="btn btn-primary button_cen">Cancel</button>
+                            </a>
+                            <!--            <a href="Main.html"> <button type="button" class="signinbtn">Sign in</button> </a>-->
+                        </div>
+                    </div>
+                </form>
+                <br><br><br>
+                <br><br><br>
+                <!--floating button for notifications -->
+                <a href="/notifications" class="float">
+                    <i class="fa fa-envelope my-float"></i>
+                </a>
+                <div class="label-container">
+                    <div class="label-text">notifications</div>
+                    <i class="fa fa-play label-arrow"></i>
                 </div>
-                <div class="col-sm-4">
-                  <span > <img class="glyphicon glyphicon-lock small-logo"  src="{% static 'icons/s.png' %}" style="width: 220px ; height: 220px"> </span>
-                  <h4>Another Service</h4>
-                  <h6 style="color: gray"> Lorem ipsum dolor sit amet..</h6>
-                </div>
-              </div>
             </div>
-             {% if user.is_superuser %}            
-               <a href="/services/new"> 
-              <button type="button" class="btn btn-success button_cen">Add Service</button> </a>
-             {% endif %}
-          
-            <div class="clearfix">
-              <a href="{% url 'home' %}"> <button type="button" class="btn btn-primary button_cen" >Cancel</button> </a>
-              <!--            <a href="Main.html"> <button type="button" class="signinbtn">Sign in</button> </a>-->
-            </div>
-          </div>
-        </form>
-        <br><br><br>
-        <br><br><br>
-        <!--floating button for notifications -->
-        <a href="/notifications" class="float">
-        <i class="fa fa-envelope my-float"></i>
-        </a>
-        <div class="label-container">
-          <div class="label-text">notifications </div>
-          <i class="fa fa-play label-arrow"></i>
         </div>
-      </div>
     </div>
-  </div>
 {% endblock %}

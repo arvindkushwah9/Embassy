@@ -1,0 +1,139 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Passport Renewal{% endblock %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .button_cen {
+            margin: 8px 0;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.7em;
+            color: #999;
+        }
+    </style>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <!--logo with title -->
+            <!--        here i removed the class name and I added the sticky-top -->
+            <div class="sticky-top">
+                <div class="sidebar-header sticky-top">
+                    <a href="{% url 'home' %}"> <img src="{% static 'icons/esa.png' %}" style="width: 160px" ;
+                                                     height="160px"></a>
+                    <h6>Embassy Service App </h6>
+                    <span>  <b>مرحبـــاً بك في موقع خدمات السفارة </b> </span>
+                </div>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="/news">News </a>
+                </li>
+                <li>
+                    <a href="/services">Services </a>
+                </li>
+                <li>
+                    <a href="/profile">Profile</a>
+                </li>
+                <li>
+                    <a href="/ads">Ad Market </a>
+                </li>
+                <li>
+                    <a href="/email">Contact us </a>
+                </li>
+                <li>
+                    <a href="/tracking">Tracking </a>
+                </li>
+            </ul>
+            <ul class="list-unstyled CTAs">
+                <li><a href="/faq" style="font-size: 12px"> FAQ </a></li>
+            </ul>
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="{% url 'logout' %}" class="download">logout</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Page Content Header -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                    </button> -->
+                    <marquee>Welcome To Embassy Service App <b> ESA </b></marquee>
+                </div>
+            </nav>
+            <!-- Passport Renewal  -->
+            <div id="services" class="container-fluid text-center " style="margin-top: 5%">
+                <div style="margin-bottom: 20px; margin-left: 40%">
+                    <div class="row slideanim">
+                        <div class="col-sm-4">
+                            <span> <img class="glyphicon glyphicon-lock small-logo"
+                                        src="{% static 'icons/visa.png' %}"
+                                        style="width: 220px ; height: 220px"> </span>
+                            <h4>Social Visa</h4>
+                            <h6 style="color: white"> apply for social visa </h6>
+                        </div>
+                    </div>
+                </div>
+                <form class="modal-content " action="/action_page.php">
+                    <div class="container">
+                        <h1>Description </h1>
+                        <p>Basically press download button to see a PDF file of the <b>Social visa Requirements
+                            Requirements </b> <br> then press Apply button to upload your files to be checked by the
+                            embassy staff before you visit the embassy </p>
+                        <div class="clearfix">
+                            <a href="https://yemenembassy.my/wp-content/uploads/2019/05/PassportForm-Handwriting.pdf">
+                                <button type="button" class="btn btn-success button_cen">Download</button>
+                            </a>
+                            <a href="/documents/new">
+                                <button type="button" class="btn btn-success button_cen">Apply</button>
+                            </a>
+                            <a href="{% url 'home' %}">
+                                <button type="button" class="btn btn-primary button_cen">Cancel</button>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
