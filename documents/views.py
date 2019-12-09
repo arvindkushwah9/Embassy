@@ -12,6 +12,8 @@ from .serializers import DocumentSerializer, DocumentCreateSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import FileSystemStorage
+
 
 def index(request):
   documents = Document.objects.all()
@@ -33,6 +35,7 @@ def new(request):
           # image = form.cleaned_data['image']
           instance = form.save(commit=False)
           instance.creator_id = user.id
+          instance.image =  form.cleaned_data['image']
           instance.updater_id = user.id
           instance.pub_date = datetime.now()
           instance.update_date = datetime.now()
@@ -82,7 +85,7 @@ def create_document(request):
     if serializer.is_valid():
         # user = Document.objects.create(serializer.validated_data)
         serializer.save(creator=request.user, updater=request.user)        
-        return Response({"message": "Document createdwwwwwwwww"}) 
+        return Response({"message": "Document created"}) 
     else:
         data = {
           "error": True,

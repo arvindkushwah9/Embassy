@@ -13,19 +13,27 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import dj_database_url
 from django.contrib.messages import constants as messages
-
+import environ
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, True)
+)
+
+# reading .env file
+env.read_env(env.str(BASE_DIR, '.env'))
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '61$y$^*n(edv9^jik+fsjnw&ig4*)br@i_-4801+=n2^x7_9sc'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = env('DEBUG')
 ALLOWED_HOSTS = ['es-embassy.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
@@ -47,7 +55,8 @@ INSTALLED_APPS = [
     'notifications.apps.NotificationsConfig',
     'services.apps.ServicesConfig',
     'ads.apps.AdsConfig',
-    # 'django_extensions'
+    'django_extensions',
+    'storages',
 
 ]
 
@@ -141,11 +150,50 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+USE_S3 = os.getenv('USE_S3') == 'TRUE'
+if USE_S3:
+  print("USE_S3", USE_S3)
+  # # aws settings
+  AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+  AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+  AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+  AWS_S3_REGION_NAME = os.getenv('REGION')
+  AWS_DEFAULT_ACL = None
+  AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+  AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+  # s3 static settings
+  # STATIC_LOCATION = 'static'
+  # STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+  STATIC_URL = '/static/'
+  STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+  # STATICFILES_STORAGE = 'esa_backend.storage_backends.StaticStorage'
+  # # s3 public media settings
+  PUBLIC_MEDIA_LOCATION = 'media'
+  MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+  DEFAULT_FILE_STORAGE = 'esa_backend.storage_backends.PublicMediaStorage'
+  # s3 private media settings
+  PRIVATE_MEDIA_LOCATION = 'private'
+  PRIVATE_FILE_STORAGE = 'esa_backend.storage_backends.PrivateMediaStorage'
+else:
+  STATIC_URL = '/static/'
+  # STATICFILES_DIRS = (
+  #     os.path.join(BASE_DIR, 'static'),
+  # )
+  STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+  MEDIA_URL = '/mediafiles/'
+  MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+
+
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

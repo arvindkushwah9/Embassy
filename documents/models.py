@@ -3,11 +3,13 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import admin
 from django.utils.html import format_html
+from django.conf import settings
+from esa_backend.storage_backends import PublicMediaStorage
 
 # Create your models here.
 class Document(models.Model):
     title= models.CharField(max_length=200)
-    image= models.ImageField()
+    image= models.FileField(storage=PublicMediaStorage())
     pub_date= models.DateTimeField('date published')
     update_date= models.DateTimeField('date updated')
     creator= models.ForeignKey(User, related_name="id+", on_delete=models.DO_NOTHING)
