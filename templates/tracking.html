@@ -86,9 +86,10 @@
                         <td>Pending</td>
                       {% endif %}
                       <td>{{ document.title }}</td>
-                      <td>{{ document.image }}
-                      <img src="{{ document.image}}" style="width: 160px"; height="160px">
-
+                      <td>
+                        {% if  document.image %}
+                          <a href="{{ document.image.url}}" >{{ document.image.filename}}</a>
+                      {% endif %}
                       </td>
                     </tr>
                   {% endfor %}
