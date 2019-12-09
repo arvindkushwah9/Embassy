@@ -73,6 +73,7 @@
                     <th>Application </th>
                     <th>Status </th>
                     <th>Note</th>
+                    <th>Document</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -85,6 +86,10 @@
                         <td>Pending</td>
                       {% endif %}
                       <td>{{ document.title }}</td>
+                      <td>{{ document.image }}
+                      <img src="{{ document.image}}" style="width: 160px"; height="160px">
+
+                      </td>
                     </tr>
                   {% endfor %}
                 </tbody>

@@ -25,7 +25,8 @@ def new(request):
   if request.method == 'GET':
       form = DocumentForm()
   else:
-      form = DocumentForm(request.POST)
+      print("FIles",  request.FILES)
+      form = DocumentForm(request.POST, request.FILES)
       user = request.user
       print("Valid form", form.is_valid())
 
@@ -33,9 +34,9 @@ def new(request):
           print('valid')
           # title = form.cleaned_data['title']
           # image = form.cleaned_data['image']
+          print(" form.cleaned_data['image']", form.cleaned_data['image'])
           instance = form.save(commit=False)
           instance.creator_id = user.id
-          instance.image =  form.cleaned_data['image']
           instance.updater_id = user.id
           instance.pub_date = datetime.now()
           instance.update_date = datetime.now()
