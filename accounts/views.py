@@ -17,6 +17,13 @@ def SignUp(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+            uinfo = UserProfile.objects.get_or_create(user=user)
+            uinfo =  UserProfile.objects.get(user = user)
+            # uinfo = request.user.profile
+            uinfo.passport_number = request.POST.get('passport_number')
+            uinfo.phone_number = request.POST.get('phone_number')
+            uinfo.save()
+
             login(request, user)
             messages.success(request, 'You have signed up successfully')
             return redirect('home')
