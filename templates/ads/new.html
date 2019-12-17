@@ -35,7 +35,7 @@
           <!-- edit form column -->
           <div class="col-md-9 personal-info">
             
-            <form class="form-horizontal" method="post" action="/ads/new">
+            <form class="form-horizontal" method="post" action="/ads/new" enctype="multipart/form-data">
             	{% csrf_token %}
               <div class="form-group">
                 <label class="col-lg-3 control-label">Title </label>

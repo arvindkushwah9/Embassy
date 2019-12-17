@@ -118,13 +118,24 @@
             </div>
           </div>
         </div>
-        <form class="modal-content " multipart="true" method="post" style="background:gainsboro">
+        <form class="form-horizontal" method="post" action="/documents/new" style="background:gainsboro" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="container">
             <h1>Submission </h1>
             <p>Upload all your files here according to PDF specifications   <b>Passport Renewal Requirements </b> <br> then track your application in the tracking page to keep updated   </p>
             <div class="clearfix">
-              {{ form.as_p }}
+              <div class="form-group">
+                <label class=" control-label">Title </label>
+                <div class="col-lg-12">                       
+                  <input type="text" name="title" maxlength="200" id="id_title">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Image </label>
+                <div class="col-lg-12">                       
+                  <input type="file" name="image" id="id_image" required>
+                </div>
+              </div>
               <div class="text-center mt-4">
                 <!-- <input type="submit" value="Submit" class="btn btn-light-blue" /> -->
                 <button type="submit" class="btn btn-success button_cen">submit </button>
@@ -134,6 +145,7 @@
             </div>
           </div>
         </form>
+
       </div>
     </div>
   </div>

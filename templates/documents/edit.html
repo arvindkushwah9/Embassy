@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
 </head>  
 <body>  
-  <form method="POST" class="post-form" action="/documents/update/{{document.id}}">  
+  <form method="POST" class="post-form" action="/documents/update/{{document.id}}" enctype="multipart/form-data">  
     {% csrf_token %}  
     <div class="container">  
       <br>  

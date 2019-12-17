@@ -34,7 +34,7 @@
               You can update your profile Info
             </div>
             <h3>Personal info</h3>
-            <form class="form-horizontal" role="form" action="/accounts/profile_update/" method="post">
+            <form class="form-horizontal" role="form" action="/accounts/profile_update/" method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {% if messages %}
                 {% for message in messages %}
